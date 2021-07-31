@@ -15,6 +15,7 @@ public class SpawnPeople : MonoBehaviour
     public int time;
 
     private int peopleCount;
+    private AudioSource spawnBell;
 
     //Temp
     public bool spawn;
@@ -42,6 +43,8 @@ public class SpawnPeople : MonoBehaviour
 
       for (int i=0; i<3; i++) {
 
+        GetComponent<AudioSource>().Play(0);
+
         for (int j=0; j<5; j++) {
 
           GameObject person;
@@ -55,6 +58,8 @@ public class SpawnPeople : MonoBehaviour
           person.GetComponent<MovementManager>().SetNewTarget(startWaypoint.transform.position);
           peopleCount--;
           startCountText.SetText(peopleCount.ToString());
+
+
           yield return new WaitForSeconds(0.5f);
         }
 

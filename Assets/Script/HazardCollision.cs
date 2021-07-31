@@ -7,6 +7,8 @@ public class HazardCollision : MonoBehaviour
 
     public GameObject bonePile;
 
+    private AudioSource splat;
+
     private void OnTriggerEnter(Collider col) {
 
       if (col.gameObject.tag == "Interactable") {
@@ -16,6 +18,9 @@ public class HazardCollision : MonoBehaviour
         if (rb.velocity.magnitude > 3f) {
           Instantiate(bonePile, transform.position, transform.rotation);
           Destroy(gameObject);
+
+        } else {
+          GetComponent<MovementManager>().SetNewTargetAsPrevious();
         }
       }
 

@@ -7,11 +7,11 @@ public class MovementManager : MonoBehaviour
 
     public float speed;
     private Vector3 nextTarget;
+    private Vector3 prevTarget;
 
     // Update is called once per frame
     void Update()
     {
-
 
       transform.position = Vector3.MoveTowards(transform.position, nextTarget, speed * Time.deltaTime);
 
@@ -23,5 +23,13 @@ public class MovementManager : MonoBehaviour
 
     public void SetNewTarget(Vector3 v) {
       nextTarget = v;
+    }
+
+    public void SetNewTargetAsPrevious() {
+      nextTarget = prevTarget;
+    }
+
+    public void SetPrevTarget(Vector3 v) {
+      prevTarget = v;
     }
 }

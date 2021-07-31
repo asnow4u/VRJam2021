@@ -14,7 +14,7 @@ public class WayPointManager : MonoBehaviour
 
         //Check for dead end
         if (nextWaypoints.Count == 0) {
-          col.gameObject.GetComponent<MovementManager>().SetNewTarget(prevWaypoint.transform.position);
+          col.gameObject.GetComponent<MovementManager>().SetNewTargetAsPrevious();
         }
 
         foreach(GameObject waypoint in nextWaypoints) {
@@ -25,6 +25,7 @@ public class WayPointManager : MonoBehaviour
           if (!Physics.Linecast(transform.position, waypoint.transform.position, layermask)) {
 
             col.gameObject.GetComponent<MovementManager>().SetNewTarget(waypoint.transform.position);
+            col.gameObject.GetComponent<MovementManager>().SetPrevTarget(transform.position);
           }
         }
       }
