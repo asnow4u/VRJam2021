@@ -6,7 +6,8 @@ using TMPro;
 public class SpawnPeople : MonoBehaviour
 {
 
-    [SerializeField] private GameObject personPrefab;
+    [SerializeField] private GameObject malePrefab;
+    [SerializeField] private GameObject femalePrefab;
 
     public GameObject startWaypoint;
     public TextMeshProUGUI startCountText;
@@ -43,7 +44,14 @@ public class SpawnPeople : MonoBehaviour
 
         for (int j=0; j<5; j++) {
 
-          GameObject person = Instantiate(personPrefab, transform.position, Quaternion.identity);
+          GameObject person;
+
+          if (Random.Range(1, 3) == 1) {
+            person = Instantiate(malePrefab, transform.position, Quaternion.identity);
+          } else {
+            person = Instantiate(femalePrefab, transform.position, Quaternion.identity);
+          }
+
           person.GetComponent<MovementManager>().SetNewTarget(startWaypoint.transform.position);
           peopleCount--;
           startCountText.SetText(peopleCount.ToString());

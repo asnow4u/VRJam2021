@@ -12,9 +12,12 @@ public class MovementManager : MonoBehaviour
     void Update()
     {
 
-      //TODO: Rotate character to face the direction their going
 
       transform.position = Vector3.MoveTowards(transform.position, nextTarget, speed * Time.deltaTime);
+
+      Vector3 diff = nextTarget - transform.position;
+      transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(diff.x, 0, diff.z)), 0.15F);
+
     }
 
 
