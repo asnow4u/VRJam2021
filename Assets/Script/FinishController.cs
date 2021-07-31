@@ -21,10 +21,11 @@ public class FinishController : MonoBehaviour
 
       if (col.gameObject.tag == "Person") {
 
-        if ( peopleCount < 5) {
-          peopleCount++;
-          finishCountText.SetText(peopleCount.ToString());
+        if ( peopleCount <= 5) {
           Destroy(col.gameObject);
+          peopleCount++;
+          GetComponent<AudioSource>().Play(0);
+          finishCountText.SetText(peopleCount.ToString());
         }
       }
     }

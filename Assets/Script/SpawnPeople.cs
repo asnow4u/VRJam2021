@@ -17,20 +17,10 @@ public class SpawnPeople : MonoBehaviour
     private int peopleCount;
     private AudioSource spawnBell;
 
-    //Temp
-    public bool spawn;
 
     void Start() {
       peopleCount = 15;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (spawn) {
-          StartCoroutine("SpawnGroup");
-          spawn = false;
-        }
+      Invoke("ToggleSpawn", 2f);
     }
 
 
