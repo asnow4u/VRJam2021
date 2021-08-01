@@ -1528,8 +1528,6 @@ GameObject:
   - component: {fileID: -4577890412263500644}
   - component: {fileID: -3231944919764752251}
   - component: {fileID: -5846639640039530723}
-  - component: {fileID: 3383808037880603460}
-  - component: {fileID: 5457220487894245538}
   m_Layer: 10
   m_Name: Male
   m_TagString: Person
@@ -1617,34 +1615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
---- !u!136 &3383808037880603460
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8953864155276496278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.6628184
-  m_Height: 1.4828837
-  m_Direction: 1
-  m_Center: {x: -0.01753068, y: 1.1820213, z: 0.045871377}
---- !u!114 &5457220487894245538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8953864155276496278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d635aca1bd4de54fa3672a7005117fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonePile: {fileID: 5823847230076433264, guid: 5e58ab0e7ad669741b9d707af288b4f5,
-    type: 3}
 --- !u!1 &8953864155276496280
 GameObject:
   m_ObjectHideFlags: 0

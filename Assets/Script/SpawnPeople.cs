@@ -45,7 +45,7 @@ public class SpawnPeople : MonoBehaviour
             person = Instantiate(femalePrefab, transform.position, Quaternion.identity);
           }
 
-          person.GetComponent<MovementManager>().SetNewTarget(startWaypoint.transform.position);
+          person.GetComponent<MovementManager>().SetNewTarget(startWaypoint);
           peopleCount--;
           startCountText.SetText(peopleCount.ToString());
 

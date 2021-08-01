@@ -5,28 +5,39 @@ using UnityEngine;
 public class WayPointManager : MonoBehaviour
 {
 
-    public List<GameObject> nextWaypoints = new List<GameObject>();
-    public GameObject prevWaypoint;
+    public List<GameObject> waypoints = new List<GameObject>();
 
     private void OnTriggerEnter(Collider col) {
 
       if (col.gameObject.tag == "Person") {
 
-        //Check for dead end
-        if (nextWaypoints.Count == 0) {
-          col.gameObject.GetComponent<MovementManager>().SetNewTargetAsPrevious();
+        GameObject prevWaypoint = col.gameObject.GetComponent<MovementManager>().GetPreWaypoint();
+
+        if (waypoints.Count == 1) {
+
+          //Check if Dead End
+          if (prevWaypoint) {
+            col.gameObject.GetComponent<MovementManager>().SetNewTarget(prevWaypoint);
+            col.gameObject.GetComponent<MovementManager>().SetPrevWaypoint(gameObject);
+          }
+
+          //Starting Waypoint
+          else {
+            col.gameObject.GetComponent<MovementManager>().SetNewTarget(waypoints[0]);
+            col.gameObject.GetComponent<MovementManager>().SetPrevWaypoint(gameObject);
+          }
         }
 
-        foreach(GameObject waypoint in nextWaypoints) {
+        else {
 
-          //Determin if something is blocking the path with raycast based on nextwaypoint
-          int layermask = ~(1 << 9 | 1 << 10);
+          int randNum = Random.Range(0, waypoints.Count);
 
-          if (!Physics.Linecast(transform.position, waypoint.transform.position, layermask)) {
-
-            col.gameObject.GetComponent<MovementManager>().SetNewTarget(waypoint.transform.position);
-            col.gameObject.GetComponent<MovementManager>().SetPrevTarget(transform.position);
+          while (waypoints[randNum] == prevWaypoint) {
+            randNum = Random.Range(0, waypoints.Count);
           }
+
+          col.gameObject.GetComponent<MovementManager>().SetNewTarget(waypoints[randNum]);
+          col.gameObject.GetComponent<MovementManager>().SetPrevWaypoint(gameObject);
         }
       }
     }

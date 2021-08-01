@@ -1,34 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class FinishController : MonoBehaviour
+public class InteractableCollision : MonoBehaviour
 {
 
-    public TextMeshProUGUI finishCountText;
+    public GameObject bonePile;
 
-    private int peopleCount;
+    private AudioSource splat;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      peopleCount = 0;
+    private Rigidbody rb;
+
+    void Start() {
+      rb = GetComponent<Rigidbody>();
     }
-
 
     private void OnTriggerEnter(Collider col) {
 
       if (col.gameObject.tag == "Person") {
 
-        if ( peopleCount < 5) {
+        if (rb.velocity.magnitude > 3f) {
+          Instantiate(bonePile, transform.position, transform.rotation);
           Destroy(col.gameObject);
-          peopleCount++;
-          GetComponent<AudioSource>().Play(0);
-          finishCountText.SetText(peopleCount.ToString());
-        }
 
-        else {
+        } else {
 
           GameObject curTarget = col.gameObject.GetComponent<MovementManager>().GetTarget();
           GameObject prevTarget = col.gameObject.GetComponent<MovementManager>().GetPreWaypoint();
