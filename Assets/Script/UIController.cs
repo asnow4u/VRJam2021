@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+
+  public GameObject mainMenu;
+
   public void ButtonClick() {
-    Debug.Log("HERE");
+    GameController.Instance.GameStart();
+    mainMenu.SetActive(false);
   }
 }

@@ -7,8 +7,7 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance;
 
-    private int numPeople;
-    private bool allPeopleSpawned;
+    public GameObject StartObject;
 
     void Awake() {
       if (Instance == null) {
@@ -18,17 +17,8 @@ public class GameController : MonoBehaviour
       }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-      if (numPeople == 0 && allPeopleSpawned) {
-
-        //TODO: UI Component
-      }
+    public void GameStart() {
+      StartObject.GetComponent<SpawnPeople>().ToggleSpawn();
     }
 
-
-    public void ToggleAllPeopleSpawned() {
-      allPeopleSpawned = true;
-    }
 }

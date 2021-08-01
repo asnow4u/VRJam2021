@@ -20,7 +20,7 @@ public class SpawnPeople : MonoBehaviour
 
     void Start() {
       peopleCount = 15;
-      Invoke("ToggleSpawn", 2f);
+      // Invoke("ToggleSpawn", 2f);
     }
 
 
@@ -55,7 +55,5 @@ public class SpawnPeople : MonoBehaviour
 
         yield return new WaitForSeconds(time);
       }
-
-      // GameController.Instance.ToggleAllPeopleSpawned();
     }
 }
